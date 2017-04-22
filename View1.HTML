@@ -1,0 +1,42 @@
+
+
+
+<html ng-app="search">
+	<head>
+	<meta charset="utf-8">
+	<title>Angular.js Example</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+ integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+ crossorigin="anonymous">
+	<script src="lib/angular.js"></script>
+	<script src="angu.js">  </script>
+	
+	</head>
+		<body>
+			
+   <div class = "container" data-ng-controller="SimpleController">
+    <h2> View 1</h2>
+    Name:
+    <input type="text" data-ng-model="name"/>
+    <br/>
+    <ul>
+        <li data-ng-repeat="cust in customers | filter:name |orderBy: 'city'"></li>
+        
+    </ul>
+    </br>
+    Customer Name: <br/>
+    <input type="text" data-ng-model="newCustomer.name"/>
+    <br/>
+    Customer City : <br/>
+    <input type="text" data-ng-model="newCustomer.city"/>
+    <br/>
+    <button data-ng-click="addCustomer()">AddCustomer</button>
+    <br/>
+    <a href="#/view2">View 2</a>
+  
+    
+    
+    
+</div>
+</body>
+</html>

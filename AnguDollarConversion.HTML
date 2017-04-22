@@ -1,0 +1,28 @@
+<html ng-app>
+	<head>
+	<meta charset="utf-8">
+	<title>Angular.js Example</title>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+ integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+ crossorigin="anonymous">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" 
+integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js"></script>
+	</head>
+	<div >
+		<body >
+		<p> Indian rupees conversion to Singapore dollars </p>
+		INR :<input ng-model="inr1" type="text"/>
+		<br>
+		SGD :{{inr1/46.92}}
+		<br>
+		<br>
+		<p> Singapore dollars to Indian rupees conversion </p>
+		SGD :<input ng-model="sgd1" type="text"/>
+		<br>
+		INR:{{sgd1*46.92}}
+		
+		</body>
+	</div>	
+</html>

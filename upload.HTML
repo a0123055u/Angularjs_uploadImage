@@ -1,0 +1,74 @@
+<html ng-app="nameApp">
+	<head>
+	<meta charset="utf-8">
+	<title>Angular.js Example</title>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.4/angular.min.js"></script>
+	<script>
+		var nameApp=angular.module('nameApp',[]);
+		nameApp.controller('NameCtrl',function($scope){
+		$scope.listName=[];
+		$scope.indexValue=0;
+	for (var i = 1; i <= 5; i++) {
+    $scope['img' + i] = false;
+    console.log("Gen Values" + $scope['img' + i]);
+	$scope.listName.push({['img'+i]:false});
+}
+		$scope.link=[];
+		
+		$scope.upload = function(n){
+		$scope.link.push({uploaded_id:"lib/rabbit.gif",show:true});
+		console.log("Entered");
+		$scope.indexValue=n;	
+		$scope.listName[n]['img'+(n+1)]=true;
+$scope['test'+$scope.indexValue]=$scope.listName[n]['img'+(n+1)];		
+		}
+		
+		$scope.delete = function(n){
+		$scope.listName[n]['img'+(n+1)]=false;
+		var length=$scope.listName.length;
+		for(var k=0;k<length;k++){
+		console.log($scope.listName[k]);
+		$scope.indexValue=n
+		}		
+		}
+		
+		$scope.$watchCollection('listName',function(newValue,old){
+		console.log("Watch Called"+newValue);
+		});
+		$scope.$watch('listName', function(newValue,oldValue) {
+		console.log("Watch Called from 2nd Watch"+newValue[$scope.indexValue]['img'+0]);
+		//setting current status using index as indexvalue in the global scope in  the back end 
+		$scope['test'+$scope.indexValue]=newValue[$scope.indexValue]['img'+($scope.indexValue+1)];//newValue[0].img1;
+		
+		}, true); 
+
+var current = 1;
+$scope.getId = function () {
+
+        var j = current;
+        console.log("Current in controller for " + 'img' + j + " " + $scope['img' + j]);
+        current = current + 1;
+        if (current == ( 5 )) {
+            current = 1;
+            j = 1;
+        }
+return $scope.listName[j].img+j;
+}
+		});
+		</script>
+	</head>
+		<body ng-controller="NameCtrl">
+		<div class="left" id="left" ng-repeat="n in [1, 2, 3, 4] track by $index">
+		<button class="btn-btn" ng-click="upload($index)">upload</button>
+		<button  ng-click="delete($index)">delete{{$index}}</button>
+		
+		 <div class="right" data-ng-attr-id=i >
+    <img ng-src="{{link[$index].uploaded_id}}" data-ng-attr-test={{test}} class="img" value="{{link[$index].uploaded_id}}"
+        ng-model="test" ng-init="test= getId()" ng-show="listName[$index]['img'+($index+1)]" /> 
+		
+    
+	{{link[0].uploaded_id}}{{listName[$index+1]['img'+($index+1)]}}{{"TEST VAL"}}{{listName[$index]['img'+($index+1)]}}
+</div>	
+</div>
+		</body>
+</html>
